@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { faCoffee, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-view-tasks',
@@ -7,9 +9,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ViewTasksComponent implements OnInit {
 
-  @Input() tasks:Array<any> =[];
+  faTrashCan = faTrashCan;
 
-  @Output() deleteItemEvent = new EventEmitter<number>();
+  @Input() tasksTodo:Array<any> =[];
+
+  @Output() deleteTaskEvent = new EventEmitter<number>();
 
   constructor() { }
 
@@ -19,12 +23,12 @@ export class ViewTasksComponent implements OnInit {
   deleteTask(i:number) {
     if (window.confirm("Etes vous sûr de vouloir supprimer?")) {
       //https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
-      this.deleteItemEvent.emit(i);
+      this.deleteTaskEvent.emit(i);
     }
   }
 
   switchTaskDone(i:number) {
-    this.tasks[i].done=true;
+    this.tasksTodo[i].done=true;
   }
 
 }

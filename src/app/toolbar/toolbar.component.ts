@@ -8,21 +8,21 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  @Output() newItemEvent = new EventEmitter<any>();
+  @Output() addTaskEvent = new EventEmitter<any>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  addTask(){
+  addTaskAction(){
     //https://developer.mozilla.org/fr/docs/Web/API/Window/prompt
     let userInput = window.prompt("ajouter une tache","undefined");
     if (userInput!=null && userInput!='undefined') {
       let newTask ={title: userInput, done:false};
       //this.tasks.push(newTask);
       //this.tasks=[newTask,...this.tasks];
-      this.newItemEvent.emit(newTask);
+      this.addTaskEvent.emit(newTask);
     }
   }
 
