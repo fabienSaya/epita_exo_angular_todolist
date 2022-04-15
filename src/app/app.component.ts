@@ -18,19 +18,19 @@ export class AppComponent {
 
   addTask(){
     //https://developer.mozilla.org/fr/docs/Web/API/Window/prompt
-    let newTaskTitle = window.prompt("ajouter une tache","undefined");
-    if (newTaskTitle!=undefined) {
-      let newTask ={title: newTaskTitle, done:false};
+    let userInput = window.prompt("ajouter une tache","undefined");
+    if (userInput!=null && userInput!='undefined') {
+      let newTask ={title: userInput, done:false};
       //this.tasks.push(newTask);
-      this.tasks=[...this.tasks,newTask]
+      this.tasks=[newTask,...this.tasks];
     }
   }
 
   deleteTask(i:number) {
-    //https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
-    this.tasks.splice(i,1);
+    if (window.confirm("Etes vous sûr de vouloir supprimer?")) {
+      //https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+      this.tasks.splice(i,1);
+    }
   }
-
-
 
 }
