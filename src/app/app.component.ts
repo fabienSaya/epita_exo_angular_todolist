@@ -15,22 +15,9 @@ export class AppComponent {
     { title: 'Créer une todo list', done: true },
   ];
 
-
-  addTask(){
-    //https://developer.mozilla.org/fr/docs/Web/API/Window/prompt
-    let userInput = window.prompt("ajouter une tache","undefined");
-    if (userInput!=null && userInput!='undefined') {
-      let newTask ={title: userInput, done:false};
-      //this.tasks.push(newTask);
-      this.tasks=[newTask,...this.tasks];
-    }
+  addTask(newTask:any){
+    this.tasks=[newTask,...this.tasks];
   }
 
-  deleteTask(i:number) {
-    if (window.confirm("Etes vous sûr de vouloir supprimer?")) {
-      //https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
-      this.tasks.splice(i,1);
-    }
-  }
 
 }
