@@ -3,3 +3,8 @@
   width: 500px;
   margin: 0 auto;
 }
+
+div.task_lists{
+  display: flex;
+  justify-content: space-between;
+}

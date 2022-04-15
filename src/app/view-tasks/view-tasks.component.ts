@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-view-tasks',
@@ -9,6 +9,8 @@ export class ViewTasksComponent implements OnInit {
 
   @Input() tasks:Array<any> =[];
 
+  @Output() deleteItemEvent = new EventEmitter<number>();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -17,8 +19,12 @@ export class ViewTasksComponent implements OnInit {
   deleteTask(i:number) {
     if (window.confirm("Etes vous sûr de vouloir supprimer?")) {
       //https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
-      this.tasks.splice(i,1);
+      this.deleteItemEvent.emit(i);
     }
+  }
+
+  switchTaskDone(i:number) {
+    this.tasks[i].done=true;
   }
 
 }

@@ -19,5 +19,17 @@ export class AppComponent {
     this.tasks=[newTask,...this.tasks];
   }
 
+  deleteTask(i:number) {
+    //https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+    this.tasks.splice(i,1);
+  }
+
+  getTasksDone() {
+    return this.tasks.filter(task => task.done);
+  }
+
+  getTasksNotDone() {
+    return this.tasks.filter(task => !task.done);
+  }
 
 }
